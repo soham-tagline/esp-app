@@ -1,34 +1,72 @@
 # EspAdapter
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/esp_adapter`. To experiment with that code, run `bin/console` for an interactive prompt.
+This Ruby library provides a EspAdapter::Mailchimp class to interact with the Mailchimp Marketing API (version 3.0). It simplifies integrating Mailchimp functionalities into your Ruby applications.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+To install EspAdapter, add it to your Gemfile by executing:
 
-Install the gem and add to the application's Gemfile by executing:
+    $ gem 'esp_adapter'
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+Then run:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle install
 
 ## Usage
 
-TODO: Write usage instructions here
+The EspAdapter::Mailchimp class offers methods for various Mailchimp Marketing API interactions. Here are some examples:
+
+1. Getting All Lists:
+
+```RUBY
+require ‘esp_adapter’
+
+mailchimp = EspAdapter::Mailchimp.new(‘<Your mailchimp api key>’)
+
+lists = mailchimp.lists
+
+# The `lists` method calls to retrieving data from the Mailchimp API endpoint for lists.
+
+puts lists.inspect  # This displays the response data from the Mailchimp API
+```
+
+2. Getting Metrics of a Specific List:
+
+```RUBY
+list_id = 'YOUR_LIST_ID'
+
+metrics = mailchimp.list_metrics(list_id)
+
+# The `list_metrics` method retrieves data for a specific list using the list ID.
+
+puts metrics.inspect  # This displays the metrics data for the specified list
+```
+
+### Note:
+
+Refer to the Mailchimp Marketing API documentation for a complete list of available methods and parameters. You can find the documentation here: https://mailchimp.com/developer/marketing/api/
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Clone the repository:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    $ git clone https://github.com/soham-tagline/esp-app.git
+
+Navigate into the cloned directory:
+
+    $ cd esp-app
+
+Run bin/setup to install dependencies:
+
+    $ bin/setup
+
+Run tests using:
+
+    $ bundle exec rspec
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/esp_adapter.
+Bug reports and pull requests are welcome on GitHub at https://github.com/soham-tagline/esp-app.
 
 ## License
 
